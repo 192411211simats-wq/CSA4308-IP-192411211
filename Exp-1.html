@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Management System</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#eef2f7;
+}
+
+header{
+background:#003366;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+nav{
+background:#0059b3;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:20px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:yellow;
+}
+
+.banner{
+height:250px;
+background:linear-gradient(to right,#0066cc,#00b3b3);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:35px;
+font-weight:bold;
+}
+
+.container{
+width:90%;
+margin:auto;
+margin-top:25px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+margin-bottom:25px;
+}
+
+h2{
+color:#003366;
+margin-bottom:15px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid gray;
+border-radius:5px;
+}
+
+button{
+background:#003366;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:green;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border:1px solid black;
+}
+
+th{
+background:#003366;
+color:white;
+padding:10px;
+}
+
+td{
+padding:10px;
+text-align:center;
+}
+
+footer{
+background:#003366;
+color:white;
+padding:15px;
+text-align:center;
+margin-top:30px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.box{
+background:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 0 8px gray;
+}
+
+.box h3{
+color:#003366;
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.features{
+grid-template-columns:1fr;
+}
+
+nav a{
+display:block;
+margin:10px;
+}
+
+.banner{
+font-size:24px;
+height:180px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Library Management System</h1>
+<p>Internet Programming Lab - Experiment 1</p>
+</header>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Books</a>
+
+<a href="#">Login</a>
+
+<a href="#">Register</a>
+
+<a href="#">Contact</a>
+
+</nav>
+
+<div class="banner">
+
+Welcome To Digital Library
+
+</div>
+
+<div class="container">
+
+<div class="features">
+
+<div class="box">
+
+<h3>Search Books</h3>
+
+<p>Search books by title, author and category.</p>
+
+</div>
+
+<div class="box">
+
+<h3>Borrow Books</h3>
+
+<p>Borrow and return books easily.</p>
+
+</div>
+
+<div class="box">
+
+<h3>Download Materials</h3>
+
+<p>Semester wise notes and materials.</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Student Login</h2>
+
+<input type="text" id="user" placeholder="Username">
+
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+</div>
+
+<div class="card">
+
+<h2>Book Search</h2>
+
+<input type="text" id="search" placeholder="Enter Book Name">
+
+<button onclick="searchBook()">Search</button>
+
+<p id="result"></p>
+
+</div>
+
+<div class="card">
+
+<h2>Available Books</h2>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Book Name</th>
+
+<th>Author</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>101</td>
+
+<td>Java Programming</td>
+
+<td>James Gosling</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>102</td>
+
+<td>Python Basics</td>
+
+<td>Guido</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>103</td>
+
+<td>HTML & CSS</td>
+
+<td>John Duckett</td>
+
+<td>Issued</td>
+
+</tr>
+
+<tr>
+
+<td>104</td>
+
+<td>Database Systems</td>
+
+<td>Korth</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>105</td>
+
+<td>Operating System</td>
+
+<td>Galvin</td>
+
+<td>Available</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>My Borrow History</h2>
+
+<table>
+
+<tr>
+
+<th>Book</th>
+
+<th>Issue Date</th>
+
+<th>Return Date</th>
+
+<th>Fine</th>
+
+</tr>
+
+<tr>
+
+<td>Java Programming</td>
+
+<td>15-07-2026</td>
+
+<td>25-07-2026</td>
+
+<td>₹0</td>
+
+</tr>
+
+<tr>
+
+<td>Python Basics</td>
+
+<td>01-06-2026</td>
+
+<td>20-06-2026</td>
+
+<td>₹20</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="card">
+
+<h2>Contact Us</h2>
+
+<input type="text" placeholder="Name">
+
+<input type="email" placeholder="Email">
+
+<input type="text" placeholder="Subject">
+
+<textarea style="width:100%;height:120px;padding:10px;" placeholder="Message"></textarea>
+
+<br><br>
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<footer>
+
+Library Management System © 2026
+
+</footer>
+
+<script>
+
+function login(){
+
+var u=document.getElementById("user").value;
+
+var p=document.getElementById("pass").value;
+
+if(u=="admin" && p=="1234"){
+
+document.getElementById("msg").innerHTML="Login Successful";
+
+document.getElementById("msg").style.color="green";
+
+}
+
+else{
+
+document.getElementById("msg").innerHTML="Invalid Username or Password";
+
+document.getElementById("msg").style.color="red";
+
+}
+
+}
+
+function searchBook(){
+
+var b=document.getElementById("search").value.toLowerCase();
+
+if(b=="java programming"){
+
+document.getElementById("result").innerHTML="Book Available";
+
+}
+
+else if(b=="python basics"){
+
+document.getElementById("result").innerHTML="Book Available";
+
+}
+
+else if(b=="database systems"){
+
+document.getElementById("result").innerHTML="Book Available";
+
+}
+
+else if(b=="operating system"){
+
+document.getElementById("result").innerHTML="Book Available";
+
+}
+
+else{
+
+document.getElementById("result").innerHTML="Book Not Found";
+
+}
+
+}
+
+function sendMessage(){
+
+alert("Thank You! Your message has been submitted.");
+
+}<!-- ================= ADMIN LOGIN ================= -->
+
+<section class="container">
+
+<h2 align="center">Admin Login</h2>
+
+<div class="card">
+
+<input type="text" id="adminUser" placeholder="Admin Username"><br><br>
+
+<input type="password" id="adminPass" placeholder="Password"><br><br>
+
+<button onclick="adminLogin()">Login</button>
+
+<p id="adminMsg"></p>
+
+</div>
+
+</section>
+
+<!-- ================= STUDENT REGISTER ================= -->
+
+<section class="container">
+
+<h2 align="center">Student Registration</h2>
+
+<div class="card">
+
+<input type="text" placeholder="Full Name"><br><br>
+
+<input type="email" placeholder="Email"><br><br>
+
+<input type="text" placeholder="Roll Number"><br><br>
+
+<input type="password" placeholder="Password"><br><br>
+
+<button>Register</button>
+
+</div>
+
+</section>
+
+<!-- ================= ADD BOOK ================= -->
+
+<section class="container">
+
+<h2 align="center">Add Book</h2>
+
+<div class="card">
+
+<input type="text" id="bookName" placeholder="Book Name"><br><br>
+
+<input type="text" id="author" placeholder="Author"><br><br>
+
+<select id="category">
+
+<option>Programming</option>
+
+<option>Database</option>
+
+<option>Networking</option>
+
+<option>Cloud Computing</option>
+
+</select>
+
+<br><br>
+
+<button onclick="addBook()">Add Book</button>
+
+</div>
+
+</section>
+
+<!-- ================= BOOK LIST ================= -->
+
+<section class="container">
+
+<h2 align="center">Available Books</h2>
+
+<table border="1" width="100%" cellpadding="10">
+
+<tr>
+
+<th>ID</th>
+
+<th>Book</th>
+
+<th>Author</th>
+
+<th>Status</th>
+
+</tr>
+
+<tbody id="bookTable">
+
+<tr>
+
+<td>101</td>
+
+<td>HTML</td>
+
+<td>John</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>102</td>
+
+<td>Java</td>
+
+<td>James</td>
+
+<td>Available</td>
+
+</tr>
+
+<tr>
+
+<td>103</td>
+
+<td>Python</td>
+
+<td>Guido</td>
+
+<td>Issued</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ================= ISSUE BOOK ================= -->
+
+<section class="container">
+
+<h2 align="center">Issue Book</h2>
+
+<div class="card">
+
+<input type="text" id="student" placeholder="Student Name"><br><br>
+
+<input type="text" id="issueBook" placeholder="Book Name"><br><br>
+
+<button onclick="issueBook()">Issue Book</button>
+
+<p id="issueMsg"></p>
+
+</div>
+
+</section>
+
+<!-- ================= RETURN BOOK ================= -->
+
+<section class="container">
+
+<h2 align="center">Return Book</h2>
+
+<div class="card">
+
+<input type="number" id="days" placeholder="Days Late"><br><br>
+
+<button onclick="calculateFine()">Return Book</button>
+
+<h3 id="fine"></h3>
+
+</div>
+
+</section>
+
+<!-- ================= MATERIALS ================= -->
+
+<section class="container">
+
+<h2 align="center">Study Materials</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>1st Year</h3>
+
+<button>Download</button>
+
+</div>
+
+<div class="card">
+
+<h3>2nd Year</h3>
+
+<button>Download</button>
+
+</div>
+
+<div class="card">
+
+<h3>3rd Year</h3>
+
+<button>Download</button>
+
+</div>
+
+<div class="card">
+
+<h3>4th Year</h3>
+
+<button>Download</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= BORROW HISTORY ================= -->
+
+<section class="container">
+
+<h2 align="center">Borrow History</h2>
+
+<table border="1" width="100%" cellpadding="10">
+
+<tr>
+
+<th>Book</th>
+
+<th>Issue Date</th>
+
+<th>Return Date</th>
+
+</tr>
+
+<tr>
+
+<td>Java</td>
+
+<td>10-07-2026</td>
+
+<td>20-07-2026</td>
+
+</tr>
+
+<tr>
+
+<td>Python</td>
+
+<td>05-06-2026</td>
+
+<td>15-06-2026</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="container">
+
+<h2 align="center">Contact Us</h2>
+
+<div class="card">
+
+<input type="text" placeholder="Your Name"><br><br>
+
+<input type="email" placeholder="Email"><br><br>
+
+<textarea rows="5" style="width:100%;" placeholder="Message"></textarea>
+
+<br><br>
+
+<button>Send Message</button>
+
+</div>
+
+</section>
+
+</script>
+
+</body>
+</html>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#eef2f7;
+}
+
+header{
+background:#003366;
+color:white;
+padding:18px;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin:0 15px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:yellow;
+}
+
+.hero{
+height:420px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1400&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:20px;
+}
+
+.btn{
+background:#ffc107;
+padding:12px 25px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+border-radius:5px;
+}
+
+.btn:hover{
+background:orange;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:35px 0;
+}
+
+.container h2{
+text-align:center;
+margin-bottom:20px;
+color:#003366;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+.card:hover{
+transform:translateY(-5px);
+transition:.3s;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #bbb;
+border-radius:5px;
+font-size:15px;
+}
+
+button{
+background:#003366;
+color:white;
+border:none;
+padding:10px 22px;
+border-radius:5px;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#0066cc;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+background:white;
+box-shadow:0 0 8px rgba(0,0,0,.15);
+}
+
+table th{
+background:#003366;
+color:white;
+padding:12px;
+}
+
+table td{
+padding:10px;
+text-align:center;
+}
+
+table tr:nth-child(even){
+background:#f2f2f2;
+}
+
+.search{
+text-align:center;
+margin:30px;
+}
+
+.search input{
+width:350px;
+}
+
+footer{
+background:#003366;
+color:white;
+text-align:center;
+padding:18px;
+margin-top:40px;
+}
+
+#adminMsg,
+#issueMsg,
+#fine{
+margin-top:15px;
+font-weight:bold;
+font-size:18px;
+color:green;
+}
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+flex-direction:column;
+text-align:center;
+}
+
+nav ul li{
+margin:10px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.search input{
+width:100%;
+}
+
+table{
+font-size:13px;
+overflow:auto;
+display:block;
+}
+
+}
+<script>
+
+//================ ADMIN LOGIN =================//
+
+function adminLogin(){
+
+let user=document.getElementById("adminUser").value;
+let pass=document.getElementById("adminPass").value;
+
+if(user=="admin" && pass=="1234"){
+
+document.getElementById("adminMsg").innerHTML="✅ Login Successful";
+document.getElementById("adminMsg").style.color="green";
+
+}
+
+else{
+
+document.getElementById("adminMsg").innerHTML="❌ Invalid Username or Password";
+document.getElementById("adminMsg").style.color="red";
+
+}
+
+}
+
+//================ ADD BOOK =================//
+
+let id=104;
+
+function addBook(){
+
+let book=document.getElementById("bookName").value;
+let author=document.getElementById("author").value;
+
+if(book=="" || author==""){
+
+alert("Please Enter Book Details");
+
+return;
+
+}
+
+let table=document.getElementById("bookTable");
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=id++;
+
+row.insertCell(1).innerHTML=book;
+
+row.insertCell(2).innerHTML=author;
+
+row.insertCell(3).innerHTML="Available";
+
+alert("Book Added Successfully");
+
+document.getElementById("bookName").value="";
+document.getElementById("author").value="";
+
+}
+
+//================ ISSUE BOOK =================//
+
+function issueBook(){
+
+let student=document.getElementById("student").value;
+
+let book=document.getElementById("issueBook").value;
+
+if(student=="" || book==""){
+
+alert("Fill all fields");
+
+return;
+
+}
+
+document.getElementById("issueMsg").innerHTML=
+
+"📚 "+book+" Issued Successfully to "+student;
+
+}
+
+//================ FINE CALCULATOR =================//
+
+function calculateFine(){
+
+let days=parseInt(document.getElementById("days").value);
+
+if(isNaN(days) || days<=0){
+
+document.getElementById("fine").innerHTML="No Fine";
+
+return;
+
+}
+
+let fine=days*10;
+
+document.getElementById("fine").innerHTML=
+
+"Fine Amount : ₹ "+fine;
+
+}
+
+//================ SEARCH BOOK =================//
+
+function searchBook(){
+
+let input=document.getElementById("searchBook").value.toLowerCase();
+
+let rows=document.getElementById("bookTable").rows;
+
+for(let i=0;i<rows.length;i++){
+
+let text=rows[i].cells[1].innerHTML.toLowerCase();
+
+if(text.indexOf(input)>-1){
+
+rows[i].style.display="";
+
+}
+
+else{
+
+rows[i].style.display="none";
+
+}
+
+}
+
+}
+
+//================ DOWNLOAD MATERIAL =================//
+
+function downloadMaterial(year){
+
+alert(year+" Study Material Download Started");
+
+}
+
+//================ CONTACT =================//
+
+function sendMessage(){
+
+alert("Message Sent Successfully");
+
+}
+
+//================ REGISTER =================//
+
+function registerStudent(){
+
+alert("Registration Successful");
+
+}
+
+//================ UPDATE BOOK =================//
+
+function updateBook(){
+
+alert("Book Updated Successfully");
+
+}
+
+//================ DELETE BOOK =================//
+
+function deleteBook(){
+
+alert("Book Deleted Successfully");
+
+}
+
+//================ RETURN BOOK =================//
+
+function returnBook(){
+
+alert("Book Returned Successfully");
+
+}
+
+//================ PROFILE =================//
+
+function profile(){
+
+alert("Student Profile Opened");
+
+}
+
+//================ HISTORY =================//
+
+function historyBook(){
+
+alert("Borrow History Loaded");
+
+}
+
+//================ LOGOUT =================//
+
+function logout(){
+
+alert("Logged Out Successfully");
+
+}
+
+//================ WELCOME MESSAGE =================//
+
+window.onload=function(){
+
+alert("Welcome to Library Management System");
+
+}
+
+</script>
