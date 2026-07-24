@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Parlour Appointment Booking</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#fff8fb;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#e91e63;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:white;
+}
+
+.logo span{
+color:#ffe082;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#ffe082;
+}
+
+.btn{
+background:white;
+color:#e91e63;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.overlay{
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero h1{
+font-size:58px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:25px;
+}
+
+.hero button{
+padding:15px 35px;
+font-size:18px;
+background:#e91e63;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+color:#e91e63;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+text-align:center;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card button{
+width:100%;
+padding:12px;
+background:#e91e63;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.card button:hover{
+background:#c2185b;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Beauty <span>Glow</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="btn">Login</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div>
+
+<h1>Beauty Parlour Appointment</h1>
+
+<p>Book Your Favourite Beauty Services Online</p>
+
+<button onclick="document.getElementById('services').scrollIntoView()">
+Book Appointment
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<h2 class="title">Our Beauty Services</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Hair Styling</h3>
+
+<p>Professional haircut and styling.</p>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Facial Treatment</h3>
+
+<p>Glow facial with premium products.</p>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Bridal Makeup</h3>
+
+<p>Complete bridal makeover package.</p>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Manicure & Pedicure</h3>
+
+<p>Luxury nail care and spa treatment.</p>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="about" style="background:#fff0f5;">
+
+<h2 class="title">About Beauty Glow</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:34px;">
+
+Beauty Glow is an online beauty parlour appointment booking system where
+customers can browse beauty services, choose a stylist, book appointments,
+make secure online payments and manage their reservations anytime.
+Customers also receive appointment reminders and can reschedule or cancel
+their appointments.
+
+</p>
+
+</center>
+
+</section>
+
+<section>
+
+<h2 class="title">Appointment Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>📅 Reservation Calendar</h3>
+<p>Book appointments by selecting your preferred date and time.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>👩 Choose Stylist</h3>
+<p>Select your favourite beauty expert for each service.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💳 Online Payment</h3>
+<p>Secure payments through PayPal, Stripe, UPI and Cards.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🔔 Appointment Reminder</h3>
+<p>Email reminders are sent before your appointment.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">Customer Dashboard</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>📋 Upcoming Appointments</h3>
+<p>View all upcoming beauty appointments.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📝 Appointment History</h3>
+<p>Check your completed appointment records.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>✏ Edit Reservation</h3>
+<p>Reschedule or update your appointment details.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>❌ Cancel Appointment</h3>
+<p>Cancel appointments whenever required.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#fff0f5;">
+
+<h2 class="title">Salon Manager Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>👩‍💼 Manage Reservations</h3>
+<p>Add, edit and cancel customer appointments.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📅 Reservation Calendar</h3>
+<p>View all daily appointments in one calendar.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📞 Contact Customers</h3>
+<p>Send SMS or call customers for appointment updates.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>⭐ Customer Feedback</h3>
+<p>View ratings and improve service quality.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px;">
+
+<div>
+
+<h3 style="color:#e91e63;">Beauty Glow Salon</h3>
+
+<br>
+
+<p style="line-height:35px;">
+
+📍 MG Road, Hyderabad
+
+<br><br>
+
+📞 +91 9876543210
+
+<br><br>
+
+📧 support@beautyglow.com
+
+<br><br>
+
+🕒 Open: 9:00 AM – 9:00 PM
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Your Email" required
+style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="5" placeholder="Your Message"
+style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Beauty Glow Appointment Booking System | All Rights Reserved
+
+</p>
+
+</footer>
+
+<script>
+
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.onclick=function(){
+
+alert("Appointment booking page will open!");
+
+};
+
+});
+
+document.querySelector("form").onsubmit=function(e){
+
+e.preventDefault();
+
+alert("Thank You! Your message has been sent successfully.");
+
+this.reset();
+
+};
+
+window.addEventListener("scroll",function(){
+
+document.querySelectorAll(".card").forEach(function(card){
+
+let pos=card.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-80){
+
+card.style.opacity="1";
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+</html>

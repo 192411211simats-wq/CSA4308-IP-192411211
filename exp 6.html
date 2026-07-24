@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Ordering System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#fff7f7;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#ff4081;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:white;
+}
+
+.logo span{
+color:#ffe082;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#ffe082;
+}
+
+.btn{
+background:#fff;
+color:#ff4081;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.overlay{
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:25px;
+}
+
+.hero button{
+padding:15px 35px;
+font-size:18px;
+background:#ff4081;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+color:#ff4081;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:#ff4081;
+margin:10px 0;
+}
+
+.card button{
+width:100%;
+padding:12px;
+background:#ff4081;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Sweet <span>Cakes</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#cakes">Cakes</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="btn">Login</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div>
+
+<h1>Order Delicious Cakes Online</h1>
+
+<p>Fresh • Tasty • Fast Delivery</p>
+
+<button onclick="document.getElementById('cakes').scrollIntoView()">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="cakes">
+
+<h2 class="title">
+Popular Cakes
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Chocolate Cake</h3>
+
+<p>Rich chocolate cake with creamy frosting.</p>
+
+<div class="price">₹699</div>
+
+<button>Order Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Strawberry Cake</h3>
+
+<p>Fresh strawberry layered cake.</p>
+
+<div class="price">₹799</div>
+
+<button>Order Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Black Forest</h3>
+
+<p>Classic black forest with cherries.</p>
+
+<div class="price">₹899</div>
+
+<button>Order Now</button>
+
+</div>
+
+</div>
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Red Velvet Cake</h3>
+
+<p>Soft red velvet cake with cream cheese frosting.</p>
+
+<div class="price">₹999</div>
+
+<button>Order Now</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about" style="background:#fff0f5;">
+
+<h2 class="title">About Us</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:34px;">
+
+Sweet Cakes is an online cake ordering platform where customers can
+browse different cake categories, customize cakes, place orders,
+make secure payments and enjoy fast home delivery.
+We prepare fresh cakes for birthdays, weddings, anniversaries
+and all special occasions.
+
+</p>
+
+</center>
+
+</section>
+
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px;">
+
+<div>
+
+<h3 style="color:#ff4081;">Sweet Cakes Bakery</h3>
+
+<br>
+
+<p style="line-height:35px;">
+
+📍 MG Road, Hyderabad
+
+<br><br>
+
+📞 +91 9876543210
+
+<br><br>
+
+📧 support@sweetcakes.com
+
+<br><br>
+
+🚚 Delivery Available : 9 AM - 10 PM
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Email Address" required
+style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="5" placeholder="Message"
+style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Sweet Cakes Ordering System | All Rights Reserved
+
+</p>
+
+</footer>
+
+<script>
+
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.onclick=function(){
+
+alert("Cake added to your order successfully!");
+
+};
+
+});
+
+document.querySelector("form").onsubmit=function(e){
+
+e.preventDefault();
+
+alert("Thank You! We will contact you shortly.");
+
+this.reset();
+
+};
+
+window.addEventListener("scroll",function(){
+
+document.querySelectorAll(".card").forEach(function(card){
+
+let pos=card.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-80){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+
+</html>

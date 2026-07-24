@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flight Reservation System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f7fa;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 60px;
+background:rgba(0,0,0,.8);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:white;
+}
+
+.logo span{
+color:#ff5722;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#ff5722;
+}
+
+.btn{
+padding:10px 22px;
+background:#ff5722;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#d84315;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.overlay{
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.hero-content button{
+padding:15px 35px;
+font-size:18px;
+background:#ff5722;
+border:none;
+border-radius:35px;
+color:white;
+cursor:pointer;
+}
+
+.hero-content button:hover{
+background:#d84315;
+}
+
+.search{
+width:90%;
+max-width:1100px;
+margin:auto;
+margin-top:-60px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+}
+
+.search input,
+.search select{
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.search button{
+background:#ff5722;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.search button:hover{
+background:#d84315;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card-content button{
+margin-top:15px;
+width:100%;
+padding:12px;
+background:#ff5722;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
+.card-content button:hover{
+background:#d84315;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.search{
+grid-template-columns:1fr;
+margin-top:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Sky <span>Wings</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#flights">Flights</a></li>
+<li><a href="#tickets">My Tickets</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+
+<li><button class="btn">Login</button></li>
+<li><button class="btn">Register</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div class="hero-content">
+
+<h1>Online Flight Reservation</h1>
+
+<p>Book Domestic & International Flights Easily</p>
+
+<button onclick="document.getElementById('flights').scrollIntoView()">
+Book Flight
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="search">
+
+<input type="text" placeholder="From">
+
+<input type="text" placeholder="Destination">
+
+<input type="date">
+
+<select>
+
+<option>Economy</option>
+<option>Premium Economy</option>
+<option>Business</option>
+<option>First Class</option>
+
+</select>
+
+<button>Search Flight</button>
+
+</div>
+<section id="flights">
+
+<h2 class="title">Available Flights</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>IndiGo Airlines</h3>
+
+<p>
+
+Delhi ➜ Hyderabad
+
+<br><br>
+
+Departure : 08:00 AM
+
+<br>
+
+Arrival : 10:10 AM
+
+<br>
+
+Class : Economy
+
+</p>
+
+<h3 style="color:#ff5722;">₹4,299</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Air India</h3>
+
+<p>
+
+Mumbai ➜ Chennai
+
+<br><br>
+
+Departure : 11:30 AM
+
+<br>
+
+Arrival : 01:45 PM
+
+<br>
+
+Class : Business
+
+</p>
+
+<h3 style="color:#ff5722;">₹7,850</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>SpiceJet</h3>
+
+<p>
+
+Bengaluru ➜ Kolkata
+
+<br><br>
+
+Departure : 04:20 PM
+
+<br>
+
+Arrival : 07:00 PM
+
+<br>
+
+Class : Premium Economy
+
+</p>
+
+<h3 style="color:#ff5722;">₹5,699</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1521727857535-28d2047314ac?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Vistara</h3>
+
+<p>
+
+Hyderabad ➜ Delhi
+
+<br><br>
+
+Departure : 06:15 PM
+
+<br>
+
+Arrival : 08:35 PM
+
+<br>
+
+Class : First Class
+
+</p>
+
+<h3 style="color:#ff5722;">₹9,999</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+
+Flight Reservation Features
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>✈ Flight Search</h3>
+
+<p>
+
+Search flights by source, destination, travel date and class.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>💺 Seat Availability</h3>
+
+<p>
+
+View available seats before booking your ticket.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>💳 Secure Payment</h3>
+
+<p>
+
+Pay safely using UPI, Debit Card, Credit Card and Net Banking.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>📧 Instant E-Ticket</h3>
+
+<p>
+
+Receive your flight ticket instantly through email.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="about" style="background:#f5f7fa;">
+
+<h2 class="title">About Flight Reservation</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:35px;">
+
+The Flight Reservation System allows passengers to search flights,
+check seat availability, reserve tickets, make secure online payments,
+download e-tickets, cancel bookings and view travel history through
+their personal dashboard.
+
+</p>
+
+</center>
+
+</section>
+
+<section id="tickets">
+
+<h2 class="title">My Ticket Services</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>🎫 My Tickets</h3>
+
+<p>
+
+View all booked flight tickets with complete travel details.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>📄 Booking Status</h3>
+
+<p>
+
+Check whether your ticket is Confirmed, Waiting or Cancelled.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>❌ Cancel Ticket</h3>
+
+<p>
+
+Cancel your flight ticket and receive a refund according to airline policy.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>🖨 Print Ticket</h3>
+
+<p>
+
+Download and print your boarding pass anytime.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">Administrator Module</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>✈ Flight Management</h3>
+
+<p>
+
+Add, edit and delete flight schedules and routes.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>💺 Seat Inventory</h3>
+
+<p>
+
+Manage available seats and travel classes.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>👥 User Management</h3>
+
+<p>
+
+Maintain passenger accounts and booking records.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>📊 Admin Reports</h3>
+
+<p>
+
+Generate reports for bookings, revenue and passenger details.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#f5f7fa;">
+
+<h2 class="title">Customer Feedback</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"Easy flight booking with quick payment and instant e-ticket."
+
+</p>
+
+<br>
+
+<b>- Rahul</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"The website is fast, responsive and very user friendly."
+
+</p>
+
+<br>
+
+<b>- Priya</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐☆</h3>
+
+<p>
+
+"Ticket cancellation and refund process was smooth."
+
+</p>
+
+<br>
+
+<b>- Arjun</b>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- Contact Section -->
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+
+<div>
+
+<h3 style="color:#ff5722;">Sky Wings Support</h3>
+
+<br>
+
+<p style="line-height:35px;">
+
+📍 Sky Wings Airlines<br>
+Hyderabad Airport, Telangana
+
+<br><br>
+
+📞 +91 9876543210
+
+<br><br>
+
+📧 support@skywings.com
+
+<br><br>
+
+🕒 Customer Support : 24 × 7
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Your Email" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="6" placeholder="Your Message"
+style="width:100%;padding:14px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer style="background:#111;color:white;padding:50px 8%;">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;">
+
+<div>
+
+<h2 style="color:#ff5722;">Sky Wings</h2>
+
+<p style="margin-top:15px;line-height:30px;">
+
+Book domestic and international flights with secure payment,
+real-time seat availability and instant e-ticket confirmation.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<br>
+
+<p><a href="#" style="color:white;text-decoration:none;">Home</a></p>
+
+<br>
+
+<p><a href="#flights" style="color:white;text-decoration:none;">Flights</a></p>
+
+<br>
+
+<p><a href="#tickets" style="color:white;text-decoration:none;">My Tickets</a></p>
+
+<br>
+
+<p><a href="#contact" style="color:white;text-decoration:none;">Contact</a></p>
+
+</div>
+
+<div>
+
+<h3>Services</h3>
+
+<br>
+
+<p>✔ Flight Search</p>
+
+<br>
+
+<p>✔ Online Booking</p>
+
+<br>
+
+<p>✔ E-Ticket</p>
+
+<br>
+
+<p>✔ Ticket Cancellation</p>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<br>
+
+<p>📘 Facebook</p>
+
+<br>
+
+<p>📷 Instagram</p>
+
+<br>
+
+<p>🐦 Twitter</p>
+
+<br>
+
+<p>▶ YouTube</p>
+
+</div>
+
+</div>
+
+<hr style="margin:35px 0;border:1px solid #444;">
+
+<center>
+
+<p>
+
+© 2026 Sky Wings Flight Reservation System. All Rights Reserved.
+
+</p>
+
+</center>
+
+</footer>
+
+<script>
+
+// Search Flight
+document.querySelector(".search button").addEventListener("click",function(){
+
+alert("Searching Available Flights...");
+
+});
+
+// Book Ticket Buttons
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+alert("Redirecting to Flight Ticket Booking Page...");
+
+});
+
+});
+
+// Contact Form
+document.querySelector("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Thank You! Your message has been sent successfully.");
+
+this.reset();
+
+});
+
+// Card Animation
+window.addEventListener("scroll",function(){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+
+let pos=card.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-80){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+</html>

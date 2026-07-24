@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Booking System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f7fa;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+.logo span{
+color:#ff9800;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:16px;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#ff9800;
+}
+
+.btn{
+padding:10px 20px;
+background:#ff9800;
+color:#fff;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.btn:hover{
+background:#ff5722;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.overlay{
+background:rgba(0,0,0,.55);
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.hero-content button{
+padding:15px 35px;
+font-size:18px;
+background:#ff9800;
+border:none;
+color:white;
+border-radius:40px;
+cursor:pointer;
+transition:.3s;
+}
+
+.hero-content button:hover{
+background:#ff5722;
+transform:scale(1.05);
+}
+
+.search{
+width:90%;
+max-width:1100px;
+margin:auto;
+margin-top:-60px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+}
+
+.search input,
+.search select{
+padding:12px;
+font-size:15px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.search button{
+background:#ff9800;
+border:none;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.search button:hover{
+background:#ff5722;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+color:#222;
+}
+
+.rooms{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.price{
+color:#ff5722;
+font-size:22px;
+font-weight:bold;
+margin:10px 0;
+}
+
+.card-content button{
+width:100%;
+padding:12px;
+background:#ff9800;
+border:none;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.card-content button:hover{
+background:#ff5722;
+}
+
+@media(max-width:900px){
+
+header{
+padding:15px 20px;
+flex-direction:column;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.search{
+grid-template-columns:1fr;
+margin-top:20px;
+}
+
+.hero-content h1{
+font-size:40px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Royal <span>Stay</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#rooms">Rooms</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+<li><button class="btn">Login</button></li>
+
+<li><button class="btn">Register</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div class="hero-content">
+
+<h1>Luxury Hotel Booking</h1>
+
+<p>Book your dream stay at the best prices.</p>
+
+<button onclick="document.getElementById('rooms').scrollIntoView()">
+Book Now
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="search">
+
+<input type="text" placeholder="Destination">
+
+<input type="date">
+
+<input type="date">
+
+<select>
+
+<option>1 Guest</option>
+
+<option>2 Guests</option>
+
+<option>3 Guests</option>
+
+<option>4 Guests</option>
+
+<option>5 Guests</option>
+
+</select>
+
+<button>Search Rooms</button>
+
+</div>
+
+<section id="rooms">
+
+<h2 class="title">
+Our Rooms
+</h2>
+
+<div class="rooms">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Standard Room</h3>
+
+<p>
+Comfortable room with free WiFi, TV, Air Conditioning and Breakfast.
+</p>
+
+<div class="price">
+₹2,999 / Night
+</div>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Deluxe Room</h3>
+
+<p>
+Spacious deluxe room with city view and premium facilities.
+</p>
+
+<div class="price">
+₹4,499 / Night
+</div>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Suite Room</h3>
+
+<p>
+Luxury suite with king-size bed, living room, balcony and complimentary breakfast.
+</p>
+
+<div class="price">
+₹6,999 / Night
+</div>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Family Room</h3>
+
+<p>
+Perfect for families with spacious interiors, extra beds and free WiFi.
+</p>
+
+<div class="price">
+₹8,499 / Night
+</div>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+Hotel Amenities
+</h2>
+
+<div class="rooms">
+
+<div class="card">
+<div class="card-content">
+<h3>🏊 Swimming Pool</h3>
+<p>Enjoy a refreshing swim in our luxurious outdoor swimming pool.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🍽 Restaurant</h3>
+<p>Experience delicious multi-cuisine dishes prepared by expert chefs.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💪 Fitness Center</h3>
+<p>Modern gym equipped with premium fitness machines.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🚗 Free Parking</h3>
+<p>Secure parking available for all guests without additional charges.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📶 Free WiFi</h3>
+<p>High-speed internet access throughout the hotel premises.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🛎 24/7 Room Service</h3>
+<p>Round-the-clock room service for your convenience.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="about" style="background:#f4f7fa;">
+
+<h2 class="title">
+About Royal Stay
+</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:35px;">
+
+Royal Stay Hotel offers premium accommodation with world-class facilities,
+comfortable rooms, delicious food, free WiFi, swimming pool,
+conference halls and 24-hour customer support.
+Our mission is to provide guests with a memorable and luxurious experience
+at affordable prices.
+
+</p>
+
+</center>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+Guest Reviews
+</h2>
+
+<div class="rooms">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"The rooms were extremely clean and spacious.
+The staff was friendly and breakfast was amazing."
+
+</p>
+
+<br>
+
+<b>- Rahul Sharma</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"Wonderful experience with excellent service.
+Highly recommended for family vacations."
+
+</p>
+
+<br>
+
+<b>- Priya Reddy</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐☆</h3>
+
+<p>
+
+"Beautiful hotel with modern facilities.
+The location is perfect and the staff is very helpful."
+
+</p>
+
+<br>
+
+<b>- Arjun Kumar</b>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#f4f7fa;">
+
+<h2 class="title">
+Hotel Gallery
+</h2>
+
+<div class="rooms">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80">
+</div>
+
+</div>
+
+</section>
+<!-- Contact Section -->
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center;">
+
+<div>
+
+<h3 style="margin-bottom:20px;color:#ff5722;">Get in Touch</h3>
+
+<p style="line-height:35px;font-size:17px;">
+
+📍 Address : Royal Stay Hotel, MG Road, Hyderabad, Telangana
+
+<br><br>
+
+📞 Phone : +91 9876543210
+
+<br><br>
+
+📧 Email : info@royalstay.com
+
+<br><br>
+
+🕒 Open : 24 × 7 Customer Support
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:15px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Your Email" required
+style="width:100%;padding:15px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="text" placeholder="Subject"
+style="width:100%;padding:15px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="6" placeholder="Your Message"
+style="width:100%;padding:15px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer style="background:#111;color:white;padding:50px 8%;">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;">
+
+<div>
+
+<h2 style="color:#ff9800;">Royal Stay Hotel</h2>
+
+<p style="margin-top:15px;line-height:30px;">
+
+Experience luxury, comfort and unforgettable hospitality.
+Book your dream stay with us today.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<br>
+
+<p><a href="#" style="color:white;text-decoration:none;">Home</a></p>
+
+<br>
+
+<p><a href="#rooms" style="color:white;text-decoration:none;">Rooms</a></p>
+
+<br>
+
+<p><a href="#about" style="color:white;text-decoration:none;">About</a></p>
+
+<br>
+
+<p><a href="#contact" style="color:white;text-decoration:none;">Contact</a></p>
+
+</div>
+
+<div>
+
+<h3>Facilities</h3>
+
+<br>
+
+<p>✔ Luxury Rooms</p>
+
+<br>
+
+<p>✔ Free WiFi</p>
+
+<br>
+
+<p>✔ Restaurant</p>
+
+<br>
+
+<p>✔ Swimming Pool</p>
+
+<br>
+
+<p>✔ Gym</p>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<br>
+
+<p>📘 Facebook</p>
+
+<br>
+
+<p>📷 Instagram</p>
+
+<br>
+
+<p>🐦 Twitter</p>
+
+<br>
+
+<p>▶ YouTube</p>
+
+</div>
+
+</div>
+
+<hr style="margin:40px 0;border:1px solid #444;">
+
+<center>
+
+<p>
+
+© 2026 Royal Stay Hotel Booking System.
+All Rights Reserved.
+
+</p>
+
+</center>
+
+</footer>
+
+<script>
+
+// Search Button
+
+document.querySelector(".search button").addEventListener("click",function(){
+
+alert("Searching Available Rooms...");
+
+});
+
+// Book Buttons
+
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+alert("Room Booking Page Coming Soon!");
+
+});
+
+});
+
+// Contact Form
+
+document.querySelector("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Thank you for contacting Royal Stay Hotel!");
+
+this.reset();
+
+});
+
+// Smooth Animation
+
+window.addEventListener("scroll",function(){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+
+let position=card.getBoundingClientRect().top;
+
+let screen=window.innerHeight;
+
+if(position<screen-100){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+// Initial Card Animation
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+</html>

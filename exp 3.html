@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bus Ticket Booking System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f4f4;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+background:rgba(0,0,0,0.8);
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+.logo span{
+color:#00c853;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:16px;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#00e676;
+}
+
+.btn{
+padding:10px 22px;
+background:#00c853;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+}
+
+.btn:hover{
+background:#009624;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.overlay{
+background:rgba(0,0,0,.6);
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.hero-content button{
+padding:15px 35px;
+font-size:18px;
+background:#00c853;
+color:white;
+border:none;
+border-radius:35px;
+cursor:pointer;
+transition:.3s;
+}
+
+.hero-content button:hover{
+background:#009624;
+transform:scale(1.05);
+}
+
+.search-box{
+width:90%;
+max-width:1100px;
+margin:auto;
+margin-top:-60px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+}
+
+.search-box input,
+.search-box select{
+padding:12px;
+font-size:15px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.search-box button{
+background:#00c853;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+.search-box button:hover{
+background:#009624;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card-content p{
+line-height:28px;
+}
+
+.card-content button{
+width:100%;
+padding:12px;
+margin-top:15px;
+background:#00c853;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.card-content button:hover{
+background:#009624;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.search-box{
+grid-template-columns:1fr;
+margin-top:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Smart <span>Bus</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#buses">Buses</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="btn">Login</button></li>
+<li><button class="btn">Register</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div class="hero-content">
+
+<h1>Online Bus Ticket Booking</h1>
+
+<p>Book Comfortable & Affordable Bus Tickets Anytime</p>
+
+<button onclick="document.getElementById('buses').scrollIntoView()">
+Book Ticket
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="search-box">
+
+<input type="text" placeholder="From">
+
+<input type="text" placeholder="To">
+
+<input type="date">
+
+<select>
+<option>1 Passenger</option>
+<option>2 Passengers</option>
+<option>3 Passengers</option>
+<option>4 Passengers</option>
+</select>
+
+<button>Search Bus</button>
+
+</div>
+<section id="buses">
+
+<h2 class="title">Available Bus Categories</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Volvo AC Bus</h3>
+
+<p>
+Luxury air-conditioned Volvo buses with comfortable reclining seats,
+mobile charging points and free WiFi.
+</p>
+
+<h3 style="color:#00c853;margin-top:10px;">
+₹850
+</h3>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Sleeper Coach</h3>
+
+<p>
+Comfortable sleeper coaches for overnight journeys with blankets,
+charging ports and reading lights.
+</p>
+
+<h3 style="color:#00c853;margin-top:10px;">
+₹1200
+</h3>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Luxury Coach</h3>
+
+<p>
+Premium buses with spacious seats, entertainment system,
+air conditioning and refreshments.
+</p>
+
+<h3 style="color:#00c853;margin-top:10px;">
+₹1600
+</h3>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Express Bus</h3>
+
+<p>
+Fast intercity buses with multiple departure timings,
+comfortable seating and affordable fares.
+</p>
+
+<h3 style="color:#00c853;margin-top:10px;">
+₹650
+</h3>
+
+<button>Book Now</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+Why Choose Smart Bus?
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>🚌 Easy Booking</h3>
+
+<p>
+Search buses by route, date and time, then reserve your seat in minutes.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>💺 Live Seat Availability</h3>
+
+<p>
+Check available seats in real time before confirming your booking.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>💳 Secure Payments</h3>
+
+<p>
+Pay safely using debit cards, credit cards, UPI or net banking.
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>📧 Instant Confirmation</h3>
+
+<p>
+Receive booking confirmation and ticket details instantly by email.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="about" style="background:#f5f5f5;">
+
+<h2 class="title">About Smart Bus</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:35px;">
+
+Smart Bus Ticket Booking System provides a simple and secure way to
+book bus tickets online. Passengers can search buses, check seat
+availability, choose their preferred seats, make secure online
+payments and receive instant booking confirmation.
+
+</p>
+
+</center>
+
+</section>
+
+<section>
+
+<h2 class="title">Booking Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>👤 User Registration</h3>
+<p>Create an account and manage your profile anytime.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🔑 Secure Login</h3>
+<p>Login, change password and recover forgotten passwords securely.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🎫 Book Tickets</h3>
+<p>Select your route, choose seats and confirm your journey.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>❌ Cancel Ticket</h3>
+<p>Cancel booked tickets quickly before departure.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📜 Booking History</h3>
+<p>View all your previous bookings from your dashboard.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📱 Mobile Friendly</h3>
+<p>Access the booking system from mobile, tablet or desktop.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">Admin Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>🚌 Manage Bus Information</h3>
+<p>Add, update and delete buses with routes, timings and seat details.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📂 Bus Categories</h3>
+<p>Maintain Volvo, Sleeper, AC, Deluxe and Luxury bus categories.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>👥 User Management</h3>
+<p>Manage registered users and monitor booking activities.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📊 Report Generation</h3>
+<p>Generate booking, revenue and passenger reports.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#f5f5f5;">
+
+<h2 class="title">Customer Reviews</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"Very easy booking process.
+Seats were comfortable and the bus arrived on time."
+
+</p>
+
+<br>
+
+<b>- Rahul</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+
+"Affordable ticket prices with secure online payment.
+Highly recommended."
+
+</p>
+
+<br>
+
+<b>- Sneha</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐☆</h3>
+
+<p>
+
+"Clean buses and friendly staff.
+Will definitely book again."
+
+</p>
+
+<br>
+
+<b>- Arjun</b><!-- Contact Section -->
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+
+<div>
+
+<h3 style="color:#00c853;">Get in Touch</h3>
+
+<br>
+
+<p style="line-height:35px;">
+
+📍 Smart Bus Travels<br>
+MG Road, Hyderabad, Telangana
+
+<br><br>
+
+📞 +91 9876543210
+
+<br><br>
+
+📧 support@smartbus.com
+
+<br><br>
+
+🕒 Customer Support : 24 × 7
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Email Address" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="6" placeholder="Message"
+style="width:100%;padding:14px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer style="background:#111;color:white;padding:50px 8%;">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;">
+
+<div>
+
+<h2 style="color:#00c853;">
+Smart Bus
+</h2>
+
+<p style="margin-top:15px;line-height:30px;">
+
+Book bus tickets online with secure payments, instant confirmation,
+and comfortable travel across India.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<br>
+
+<p><a href="#" style="color:white;text-decoration:none;">Home</a></p>
+
+<br>
+
+<p><a href="#buses" style="color:white;text-decoration:none;">Buses</a></p>
+
+<br>
+
+<p><a href="#about" style="color:white;text-decoration:none;">About</a></p>
+
+<br>
+
+<p><a href="#contact" style="color:white;text-decoration:none;">Contact</a></p>
+
+</div>
+
+<div>
+
+<h3>Facilities</h3>
+
+<br>
+
+<p>✔ Online Booking</p>
+
+<br>
+
+<p>✔ Seat Selection</p>
+
+<br>
+
+<p>✔ Secure Payment</p>
+
+<br>
+
+<p>✔ Instant Ticket</p>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<br>
+
+<p>📘 Facebook</p>
+
+<br>
+
+<p>📷 Instagram</p>
+
+<br>
+
+<p>🐦 Twitter</p>
+
+<br>
+
+<p>▶ YouTube</p>
+
+</div>
+
+</div>
+
+<hr style="margin:35px 0;border:1px solid #444;">
+
+<center>
+
+<p>
+
+© 2026 Smart Bus Ticket Booking System. All Rights Reserved.
+
+</p>
+
+</center>
+
+</footer>
+
+<script>
+
+document.querySelector(".search-box button").addEventListener("click",function(){
+
+alert("Searching Available Buses...");
+
+});
+
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+alert("Redirecting to Bus Ticket Booking Page...");
+
+});
+
+});
+
+document.querySelector("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Thank You! Your message has been sent successfully.");
+
+this.reset();
+
+});
+
+window.addEventListener("scroll",function(){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+
+let pos=card.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-80){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+</html>
+
+</div>
+
+</div>
+
+</div>
+
+</section>

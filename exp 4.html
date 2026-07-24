@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Train Reservation System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f7fa;
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 60px;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+.logo span{
+color:#1565c0;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#42a5f5;
+}
+
+.btn{
+padding:10px 22px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#0d47a1;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.overlay{
+background:rgba(0,0,0,.60);
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.hero-content button{
+padding:15px 35px;
+font-size:18px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:35px;
+cursor:pointer;
+}
+
+.hero-content button:hover{
+background:#0d47a1;
+}
+
+.search{
+width:90%;
+max-width:1100px;
+margin:auto;
+margin-top:-60px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+}
+
+.search input,
+.search select{
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.search button{
+background:#1565c0;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.search button:hover{
+background:#0d47a1;
+}
+
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card-content button{
+margin-top:15px;
+width:100%;
+padding:12px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.card-content button:hover{
+background:#0d47a1;
+}
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero-content h1{
+font-size:42px;
+}
+
+.search{
+grid-template-columns:1fr;
+margin-top:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Rail <span>Express</span>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#trains">Trains</a></li>
+<li><a href="#pnr">PNR Status</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="btn">Login</button></li>
+<li><button class="btn">Register</button></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay">
+
+<div class="hero-content">
+
+<h1>Online Train Reservation</h1>
+
+<p>Book Train Tickets Quickly, Securely & Easily</p>
+
+<button onclick="document.getElementById('trains').scrollIntoView()">
+Book Ticket
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="search">
+
+<input type="text" placeholder="From Station">
+
+<input type="text" placeholder="To Station">
+
+<input type="date">
+
+<select>
+<option>Sleeper</option>
+<option>3A</option>
+<option>2A</option>
+<option>1A</option>
+<option>Chair Car</option>
+</select>
+
+<button>Search Train</button>
+
+</div>
+<section id="trains">
+
+<h2 class="title">Available Trains</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Rajdhani Express</h3>
+
+<p>
+Delhi → Hyderabad<br>
+Departure: 06:00 AM<br>
+Arrival: 08:30 PM<br>
+Class: 1A, 2A, 3A
+</p>
+
+<h3 style="color:#1565c0;">₹2,150</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1515165562835-c4c4b1f83b7f?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Shatabdi Express</h3>
+
+<p>
+Chennai → Bengaluru<br>
+Departure: 07:15 AM<br>
+Arrival: 12:00 PM<br>
+Class: CC, Executive
+</p>
+
+<h3 style="color:#1565c0;">₹1,250</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Duronto Express</h3>
+
+<p>
+Mumbai → Kolkata<br>
+Departure: 09:30 PM<br>
+Arrival: 11:15 AM<br>
+Class: Sleeper, 3A, 2A
+</p>
+
+<h3 style="color:#1565c0;">₹1,850</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Garib Rath</h3>
+
+<p>
+Hyderabad → Visakhapatnam<br>
+Departure: 08:45 PM<br>
+Arrival: 07:00 AM<br>
+Class: AC 3 Tier
+</p>
+
+<h3 style="color:#1565c0;">₹950</h3>
+
+<button>Book Ticket</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">Reservation Features</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>🚆 Train Search</h3>
+<p>Search trains using source, destination, journey date and travel class.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💺 Seat Availability</h3>
+<p>Check real-time seat availability before booking your ticket.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💳 Secure Payment</h3>
+<p>Pay online using UPI, Debit Card, Credit Card or Net Banking.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🎫 Instant PNR</h3>
+<p>Receive ticket confirmation and a unique PNR number instantly.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+<section id="pnr" style="background:#f4f7fa;">
+
+<h2 class="title">Check PNR Status</h2>
+
+<center>
+
+<div style="max-width:700px;background:white;padding:30px;border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);">
+
+<input type="text" id="pnr"
+placeholder="Enter 10 Digit PNR Number"
+style="width:70%;padding:15px;border:1px solid #ccc;border-radius:8px;">
+
+<button class="btn" onclick="checkPNR()">
+Check Status
+</button>
+
+<p id="result"
+style="margin-top:25px;font-size:20px;font-weight:bold;color:#1565c0;">
+</p>
+
+</div>
+
+</center>
+
+</section>
+
+<section id="about">
+
+<h2 class="title">
+About Railway Reservation
+</h2>
+
+<center>
+
+<p style="max-width:900px;font-size:18px;line-height:35px;">
+
+The Online Train Reservation System allows passengers to search trains,
+check seat availability, reserve tickets, make secure payments,
+track PNR status and cancel tickets online.
+Passengers receive instant booking confirmation and can print
+their tickets anytime.
+
+</p>
+
+</center>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+Passenger Services
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>🎫 Ticket Booking</h3>
+<p>Book train tickets quickly from anywhere.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>❌ Ticket Cancellation</h3>
+<p>Cancel booked tickets according to refund rules.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💰 Refund Process</h3>
+<p>Automatic refund based on railway cancellation policy.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🖨 Print Ticket</h3>
+<p>Download and print your reserved ticket anytime.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📜 Booking History</h3>
+<p>View all previous reservations from your dashboard.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📧 Email Confirmation</h3>
+<p>Receive ticket confirmation instantly via email.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#f4f7fa;">
+
+<h2 class="title">
+Administrator Features
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-content">
+<h3>🚉 Manage Trains</h3>
+<p>Add, update and delete train schedules and routes.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💺 Seat Management</h3>
+<p>Control seat availability and travel classes.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💵 Fare Management</h3>
+<p>Maintain fare details by class, zone and journey date.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>📊 Reports</h3>
+<p>Generate passenger, booking and revenue reports.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section style="background:#ffffff;">
+
+<h2 class="title">
+Customer Reviews
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+"Very easy booking process and instant PNR confirmation."
+</p>
+
+<br>
+
+<b>- Rahul</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐⭐</h3>
+
+<p>
+"Seat availability is updated in real time. Excellent website."
+</p>
+
+<br>
+
+<b>- Priya</b>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-content">
+
+<h3>⭐⭐⭐⭐☆</h3>
+
+<p>
+"Fast payment process and ticket cancellation was simple."
+</p>
+
+<br>
+
+<b>- Kiran</b>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- Contact Section -->
+<section id="contact">
+
+<h2 class="title">Contact Us</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+
+<div>
+
+<h3 style="color:#1565c0;">Rail Express Support</h3>
+
+<br>
+
+<p style="line-height:35px;">
+
+📍 Rail Express Reservation Center<br>
+Secunderabad, Telangana
+
+<br><br>
+
+📞 +91 9876543210
+
+<br><br>
+
+📧 support@railexpress.com
+
+<br><br>
+
+🕒 Customer Support: 24 × 7
+
+</p>
+
+</div>
+
+<div>
+
+<form>
+
+<input type="text" placeholder="Your Name" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<input type="email" placeholder="Your Email" required
+style="width:100%;padding:14px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+
+<textarea rows="6" placeholder="Your Message"
+style="width:100%;padding:14px;border:1px solid #ccc;border-radius:8px;"></textarea>
+
+<br><br>
+
+<button class="btn" type="submit">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer style="background:#111;color:white;padding:50px 8%;">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;">
+
+<div>
+
+<h2 style="color:#42a5f5;">Rail Express</h2>
+
+<p style="margin-top:15px;line-height:30px;">
+
+Book train tickets online with real-time seat availability,
+secure payments and instant PNR confirmation.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<br>
+
+<p><a href="#" style="color:white;text-decoration:none;">Home</a></p>
+
+<br>
+
+<p><a href="#trains" style="color:white;text-decoration:none;">Trains</a></p>
+
+<br>
+
+<p><a href="#pnr" style="color:white;text-decoration:none;">PNR Status</a></p>
+
+<br>
+
+<p><a href="#contact" style="color:white;text-decoration:none;">Contact</a></p>
+
+</div>
+
+<div>
+
+<h3>Services</h3>
+
+<br>
+
+<p>✔ Train Search</p>
+
+<br>
+
+<p>✔ Seat Availability</p>
+
+<br>
+
+<p>✔ Online Payment</p>
+
+<br>
+
+<p>✔ Ticket Cancellation</p>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<br>
+
+<p>📘 Facebook</p>
+
+<br>
+
+<p>📷 Instagram</p>
+
+<br>
+
+<p>🐦 Twitter</p>
+
+<br>
+
+<p>▶ YouTube</p>
+
+</div>
+
+</div>
+
+<hr style="margin:35px 0;border:1px solid #444;">
+
+<center>
+
+<p>
+
+© 2026 Rail Express Train Reservation System. All Rights Reserved.
+
+</p>
+
+</center>
+
+</footer>
+
+<script>
+
+// Search Train
+document.querySelector(".search button").addEventListener("click",function(){
+
+alert("Searching Available Trains...");
+
+});
+
+// Book Ticket Buttons
+document.querySelectorAll(".card button").forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+alert("Redirecting to Train Ticket Booking Page...");
+
+});
+
+});
+
+// Contact Form
+document.querySelector("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Thank You! Your message has been sent successfully.");
+
+this.reset();
+
+});
+
+// PNR Status
+function checkPNR(){
+
+let pnr=document.getElementById("pnr").value;
+
+if(pnr.length==10){
+
+document.getElementById("result").innerHTML="✅ PNR Status : Confirmed";
+
+}
+else{
+
+document.getElementById("result").innerHTML="❌ Please Enter a Valid 10 Digit PNR Number";
+
+}
+
+}
+
+// Card Animation
+window.addEventListener("scroll",function(){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+
+let pos=card.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-80){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="0.8s";
+
+});
+
+</script>
+
+</body>
+</html>
