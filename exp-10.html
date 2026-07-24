@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StyleHub Fashion Store</title>
+<style>
+body{margin:0;font-family:Arial;background:#f8f5f2}header{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:#111;color:#fff;position:sticky;top:0}
+.logo{font-size:28px;color:#d4af37;font-weight:bold}nav a{color:#fff;margin:0 12px;text-decoration:none}
+.hero{height:420px;background:linear-gradient(90deg,#222,#8b6b61);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero h1{font-size:52px}.btn{background:#d4af37;color:#111;padding:12px 24px;border:none;border-radius:6px}
+.sec{padding:50px 6%}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 8px #ccc;padding:15px}.img{height:220px;background:#eee;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:60px}
+.price{color:#b22222;font-weight:bold}.footer{background:#111;color:#fff;padding:30px;text-align:center}
+</style></head><body>
+<header><div class="logo">StyleHub</div><nav><a>Men</a><a>Women</a><a>Kids</a><a>Brands</a><a>Sale</a></nav><div>🔍 ❤️ 🛒</div></header>
+<section class="hero"><div><h1>New Season Fashion</h1><p>Premium collections for Men, Women & Kids</p><button class="btn">Shop Now</button></div></section>
+<section class="sec"><h2>Trending Collections</h2><div class="grid">
+<div class="card"><div class="img">👗</div><h3>Women's Dress</h3><p class="price">₹2,499</p><button class="btn">Add to Cart</button></div>
+<div class="card"><div class="img">👔</div><h3>Men's Blazer</h3><p class="price">₹3,999</p><button class="btn">Add to Cart</button></div>
+<div class="card"><div class="img">👟</div><h3>Sneakers</h3><p class="price">₹1,999</p><button class="btn">Add to Cart</button></div>
+<div class="card"><div class="img">👜</div><h3>Hand Bag</h3><p class="price">₹2,199</p><button class="btn">Add to Cart</button></div>
+</div></section>
+<section class="sec" style="background:#fff"><h2>Featured Brands</h2><p>Zara • H&M • Levi's • Puma • Nike</p><h2>Flash Sale</h2><p>Flat 50% OFF on selected products.</p><h2>Size Guide</h2><p>XS, S, M, L, XL with easy exchange and returns.</p><h2>Customer Features</h2><ul><li>Wishlist</li><li>Order Tracking</li><li>Reviews</li><li>Secure Checkout</li></ul><h2>Admin Features</h2><ul><li>Add/Edit/Delete Products</li><li>Manage Prices</li><li>View Orders</li></ul></section>
+<div class="footer">© 2026 StyleHub Fashion Store</div>
+<script>
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>alert('Demo Action'));
+</script></body></html>
