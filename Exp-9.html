@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechSavvy Electronics Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background:#f2f2f2;
+}
+
+.topbar{
+background:#111827;
+color:white;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#ff9800;
+}
+
+.search{
+display:flex;
+width:45%;
+}
+
+.search input{
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+border-radius:5px 0 0 5px;
+}
+
+.search button{
+padding:12px 20px;
+background:#ff9800;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:0 5px 5px 0;
+}
+
+.menu{
+display:flex;
+gap:20px;
+font-size:17px;
+}
+
+.menu span{
+cursor:pointer;
+}
+
+.banner{
+margin:20px;
+background:linear-gradient(90deg,#0f172a,#2563eb);
+color:white;
+padding:60px;
+border-radius:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.banner h1{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.banner p{
+font-size:20px;
+}
+
+.banner button{
+margin-top:20px;
+padding:14px 30px;
+background:#ff9800;
+border:none;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.categories{
+display:flex;
+justify-content:space-around;
+background:white;
+margin:20px;
+padding:25px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.cat{
+cursor:pointer;
+transition:.3s;
+}
+
+.cat:hover{
+transform:scale(1.1);
+color:#2563eb;
+}
+
+.cat img{
+width:70px;
+height:70px;
+margin-bottom:10px;
+}
+
+.title{
+margin:30px;
+font-size:32px;
+color:#0f172a;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+padding:0 30px 40px;
+}
+
+.product{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+transition:.3s;
+position:relative;
+}
+
+.product:hover{
+transform:translateY(-8px);
+}
+
+.discount{
+position:absolute;
+background:red;
+color:white;
+padding:8px 15px;
+top:10px;
+left:10px;
+border-radius:20px;
+font-size:14px;
+}
+
+.product img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.info{
+padding:20px;
+}
+
+.price{
+font-size:24px;
+color:#2563eb;
+font-weight:bold;
+margin:10px 0;
+}
+
+.rating{
+color:#ff9800;
+margin-bottom:10px;
+}
+
+.buy{
+width:100%;
+padding:12px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.buy:hover{
+background:#0f172a;
+}
+
+@media(max-width:900px){
+
+.topbar{
+flex-direction:column;
+gap:15px;
+}
+
+.search{
+width:100%;
+}
+
+.categories{
+flex-wrap:wrap;
+gap:20px;
+}
+
+.banner{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+<div class="logo">TechSavvy</div>
+
+<div class="search">
+
+<input type="text" placeholder="Search Smartphones, Laptops, Tablets...">
+
+<button>Search</button>
+
+</div>
+
+<div class="menu">
+
+<span>👤 Login</span>
+
+<span>❤️ Wishlist</span>
+
+<span>🛒 Cart(0)</span>
+
+</div>
+
+</div>
+
+<div class="banner">
+
+<div>
+
+<h1>MEGA ELECTRONICS SALE</h1>
+
+<p>Up to 60% OFF on Premium Gadgets</p>
+
+<button>Shop Now</button>
+
+</div>
+
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" width="220">
+
+</div>
+
+<div class="categories">
+
+<div class="cat">
+<img src="https://cdn-icons-png.flaticon.com/512/15/15874.png">
+<h3>Mobiles</h3>
+</div>
+
+<div class="cat">
+<img src="https://cdn-icons-png.flaticon.com/512/179/179386.png">
+<h3>Laptops</h3>
+</div>
+
+<div class="cat">
+<img src="https://cdn-icons-png.flaticon.com/512/888/888857.png">
+<h3>Tablets</h3>
+</div>
+
+<div class="cat">
+<img src="https://cdn-icons-png.flaticon.com/512/2972/2972531.png">
+<h3>Smart Watch</h3>
+</div>
+
+<div class="cat">
+<img src="https://cdn-icons-png.flaticon.com/512/3659/3659898.png">
+<h3>Headphones</h3>
+</div>
+
+</div>
+
+<h2 class="title">Featured Products</h2>
+<div class="products">
+
+<div class="product">
+
+<div class="discount">-20%</div>
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>iPhone 16 Pro</h3>
+
+<p>256GB | A18 Chip | Titanium Finish</p>
+
+<div class="rating">★★★★★ (4.9)</div>
+
+<div class="price">₹1,19,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="discount">-15%</div>
+
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>Dell XPS Laptop</h3>
+
+<p>Intel i7 | 16GB RAM | 512GB SSD</p>
+
+<div class="rating">★★★★☆ (4.7)</div>
+
+<div class="price">₹84,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="discount">-30%</div>
+
+<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>Galaxy Smart Watch</h3>
+
+<p>AMOLED Display | GPS | Heart Rate</p>
+
+<div class="rating">★★★★★ (4.8)</div>
+
+<div class="price">₹19,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="discount">-25%</div>
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>Sony WH-1000XM5</h3>
+
+<p>Wireless Noise Cancelling Headphones</p>
+
+<div class="rating">★★★★★ (5.0)</div>
+
+<div class="price">₹24,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="discount">-18%</div>
+
+<img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>iPad Air</h3>
+
+<p>128GB | M2 Chip | Wi-Fi</p>
+
+<div class="rating">★★★★☆ (4.6)</div>
+
+<div class="price">₹56,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="discount">-35%</div>
+
+<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80">
+
+<div class="info">
+
+<h3>Bluetooth Speaker</h3>
+
+<p>Portable | Waterproof | 20 Hours Battery</p>
+
+<div class="rating">★★★★☆ (4.5)</div>
+
+<div class="price">₹4,999</div>
+
+<button class="buy">Add to Cart</button>
+
+</div>
+
+</div>
+
+</div>
+
+<section style="background:white;margin:30px;border-radius:12px;padding:35px;box-shadow:0 2px 8px rgba(0,0,0,.1);">
+
+<h2 style="color:#0f172a;margin-bottom:20px;">
+🔥 Today's Flash Deals
+</h2>
+
+<ul style="line-height:35px;font-size:18px;">
+
+<li>📱 Smartphones up to <b>40% OFF</b></li>
+
+<li>💻 Laptops starting from <b>₹39,999</b></li>
+
+<li>⌚ Smart Watches Buy 1 Get 1 Accessories</li>
+
+<li>🎧 Headphones Flat <b>35% OFF</b></li>
+
+<li>📦 Free Delivery on Orders Above ₹999</li>
+
+</ul>
+
+</section>
+<section style="display:grid;grid-template-columns:2fr 1fr;gap:25px;padding:30px;">
+
+<div style="background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1);">
+
+<h2 style="color:#0f172a;">🛒 Shopping Cart</h2>
+
+<table style="width:100%;margin-top:20px;border-collapse:collapse;">
+
+<tr style="background:#2563eb;color:white;">
+<th style="padding:12px;">Product</th>
+<th>Qty</th>
+<th>Price</th>
+</tr>
+
+<tr>
+<td style="padding:12px;">iPhone 16 Pro</td>
+<td align="center">1</td>
+<td align="center">₹1,19,999</td>
+</tr>
+
+<tr>
+<td style="padding:12px;">Sony Headphones</td>
+<td align="center">1</td>
+<td align="center">₹24,999</td>
+</tr>
+
+<tr style="font-weight:bold;background:#f5f5f5;">
+<td colspan="2" style="padding:12px;">Total</td>
+<td align="center">₹1,44,998</td>
+</tr>
+
+</table>
+
+<br>
+
+<button id="checkout"
+style="padding:14px 30px;background:#ff9800;color:white;border:none;border-radius:6px;cursor:pointer;">
+Proceed to Checkout
+</button>
+
+</div>
+
+<div style="background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1);">
+
+<h2 style="color:#0f172a;">📦 Order Tracking</h2>
+
+<br>
+
+<p><b>Order ID:</b> TS458963</p>
+
+<br>
+
+<progress value="75" max="100" style="width:100%;height:18px;"></progress>
+
+<br><br>
+
+<p><b>Status:</b> Out for Delivery</p>
+
+<br>
+
+<p>Estimated Delivery</p>
+
+<h3 style="color:#2563eb;">Tomorrow</h3>
+
+</div>
+
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;padding:30px;">
+
+<div style="background:white;padding:25px;border-radius:12px;">
+<h2 style="color:#2563eb;">👤 Customer Dashboard</h2>
+<ul style="line-height:35px;margin-top:15px;">
+<li>✔ Login / Signup</li>
+<li>✔ Wishlist</li>
+<li>✔ Shopping Cart</li>
+<li>✔ Order History</li>
+<li>✔ Track Orders</li>
+<li>✔ Personalized Recommendations</li>
+</ul>
+</div>
+
+<div style="background:white;padding:25px;border-radius:12px;">
+<h2 style="color:#2563eb;">⚙ Admin Features</h2>
+<ul style="line-height:35px;margin-top:15px;">
+<li>✔ Add Products</li>
+<li>✔ Update Prices</li>
+<li>✔ Remove Products</li>
+<li>✔ Manage Categories</li>
+<li>✔ Customer Details</li>
+<li>✔ Order Reports</li>
+</ul>
+</div>
+
+<div style="background:white;padding:25px;border-radius:12px;">
+<h2 style="color:#2563eb;">⭐ Customer Reviews</h2>
+
+<p>"Excellent shopping experience!" ⭐⭐⭐⭐⭐</p>
+<br>
+
+<p>"Fast delivery and genuine products." ⭐⭐⭐⭐⭐</p>
+<br>
+
+<p>"Best electronics deals online." ⭐⭐⭐⭐☆</p>
+
+</div>
+
+</section>
+
+<section style="background:#111827;color:white;padding:45px;text-align:center;">
+
+<h2>Subscribe for Latest Deals</h2>
+
+<br>
+
+<input id="email"
+type="email"
+placeholder="Enter your email"
+style="padding:12px;width:300px;border:none;border-radius:5px;">
+
+<button id="subscribe"
+style="padding:12px 25px;background:#ff9800;border:none;color:white;border-radius:5px;cursor:pointer;">
+Subscribe
+</button>
+
+</section>
+
+<footer style="background:#000;color:white;padding:30px;text-align:center;">
+
+<h3>TechSavvy Electronics Store</h3>
+
+<br>
+
+<p>Email : support@techsavvy.com</p>
+
+<p>Phone : +91 9876543210</p>
+
+<p>Address : Hyderabad, Telangana</p>
+
+<br>
+
+<p>© 2026 TechSavvy Electronics Store | All Rights Reserved</p>
+
+</footer>
+
+<script>
+
+let cart=0;
+
+document.querySelectorAll(".buy").forEach(function(btn){
+
+btn.onclick=function(){
+
+cart++;
+
+document.querySelector(".menu span:last-child").innerHTML="🛒 Cart("+cart+")";
+
+alert("Product Added to Cart!");
+
+};
+
+});
+
+document.getElementById("checkout").onclick=function(){
+
+alert("Proceeding to Secure Payment Gateway...");
+
+};
+
+document.getElementById("subscribe").onclick=function(){
+
+let mail=document.getElementById("email").value;
+
+if(mail==""){
+
+alert("Enter your Email.");
+
+}
+
+else{
+
+alert("Subscribed Successfully!");
+
+document.getElementById("email").value="";
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
